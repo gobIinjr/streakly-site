@@ -1,0 +1,316 @@
+/*
+  Общий стиль сайта Streakly. Системный шрифт и сдержанная палитра,
+  как у страниц приложений на iPhone. Сторонних шрифтов и скриптов нет:
+  сайт не делает запросов к чужим серверам.
+*/
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f5f7;
+  --card: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --line: #d2d2d7;
+  --accent: #2f7f70;
+  --accent-soft: rgba(58, 143, 126, 0.12);
+  --nav: rgba(255, 255, 255, 0.8);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-alt: #111113;
+    --card: #1c1c1e;
+    --text: #f5f5f7;
+    --muted: #a1a1a6;
+    --line: #38383a;
+    --accent: #5ee7d0;
+    --accent-soft: rgba(94, 231, 208, 0.14);
+    --nav: rgba(22, 22, 23, 0.8);
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+.narrow { max-width: 720px; }
+
+/* ---------- Верхняя панель ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--nav);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav .wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 52px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 600;
+}
+.brand img { width: 26px; height: 26px; border-radius: 6px; }
+
+.nav-links { display: flex; gap: 18px; margin-left: auto; font-size: 14px; }
+.nav-links a { color: var(--text); opacity: 0.8; }
+.nav-links a:hover { opacity: 1; text-decoration: none; }
+
+/* Переключатель языка — сегменты, как в настройках iPhone */
+.lang-switch {
+  display: flex;
+  background: var(--bg-alt);
+  border-radius: 9px;
+  padding: 2px;
+  font-size: 13px;
+}
+.lang-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  padding: 4px 9px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.lang-switch button[aria-pressed="true"] {
+  background: var(--card);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+}
+
+/* На телефоне ссылки прячем: разделы и так идут друг за другом */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .lang-switch { margin-left: auto; }
+}
+
+/* ---------- Языки ---------- */
+
+/* Пока скрипт не выбрал язык (или он выключен), видны все три версии. */
+/* Прячем чужие языки, а свой оставляем с обычным отображением —
+   так работает и для блоков, и для коротких подписей внутри строки. */
+html.lang-ready:not([data-show="ru"]) [data-lang="ru"],
+html.lang-ready:not([data-show="en"]) [data-lang="en"],
+html.lang-ready:not([data-show="es"]) [data-lang="es"] { display: none; }
+
+/* ---------- Главный экран ---------- */
+
+.hero { text-align: center; padding: 72px 0 40px; }
+
+.hero .icon {
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 24px;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  font-size: clamp(40px, 7vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.lead {
+  font-size: clamp(19px, 2.6vw, 24px);
+  line-height: 1.35;
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto 28px;
+}
+
+.actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.button {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 500;
+}
+.button.primary { background: var(--accent); color: #fff; }
+@media (prefers-color-scheme: dark) { .button.primary { color: #000; } }
+.button.secondary { background: var(--accent-soft); color: var(--accent); }
+.button:hover { text-decoration: none; opacity: 0.9; }
+/* Приложения ещё нет в App Store — плашка без заливки, чтобы не казалась кнопкой.
+   После выхода заменить на официальный значок App Store со ссылкой. */
+.button.soon {
+  cursor: default;
+  background: transparent;
+  color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.button.soon:hover { opacity: 1; }
+
+/* ---------- Галерея экранов ---------- */
+
+.gallery {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 24px 20px 48px;
+  justify-content: center;
+}
+.gallery figure { margin: 0; flex: 0 0 220px; scroll-snap-align: center; text-align: center; }
+.gallery img {
+  width: 100%;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.gallery figcaption { margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+/* На узком экране галерея листается пальцем */
+@media (max-width: 1000px) {
+  .gallery { justify-content: flex-start; }
+}
+
+/* ---------- Секции ---------- */
+
+.section { padding: 72px 0; }
+.section.alt { background: var(--bg-alt); }
+
+h2 {
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+  text-align: center;
+}
+.section-lead { text-align: center; color: var(--muted); font-size: 19px; max-width: 620px; margin: 0 auto 40px; }
+
+.grid {
+  display: grid;
+  /* Четыре карточки — ровно два ряда по две, на телефоне одна колонка */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 28px;
+}
+.section:not(.alt) .card { background: var(--bg-alt); }
+
+.card .symbol {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+.card .symbol svg { width: 24px; height: 24px; }
+.card h3 { font-size: 21px; margin: 0 0 6px; line-height: 1.25; }
+.card p { margin: 0; color: var(--muted); }
+
+.note { text-align: center; font-size: 14px; color: var(--muted); margin: 28px auto 0; max-width: 620px; }
+
+/* ---------- Поддержка ---------- */
+
+.contact {
+  text-align: center;
+  background: var(--card);
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 32px;
+}
+.contact p { margin: 0 0 16px; color: var(--muted); }
+
+.faq {
+  background: var(--card);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.faq details { border-top: 1px solid var(--line); }
+.faq details:first-child { border-top: 0; }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 48px 18px 22px;
+  font-weight: 600;
+  position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+/* Плюс справа превращается в минус, когда ответ открыт */
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--accent);
+}
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0; padding: 0 22px 20px; color: var(--muted); }
+
+/* ---------- Политика ---------- */
+
+.doc-header { text-align: center; padding: 64px 0 32px; }
+.doc-header h1 { font-size: clamp(36px, 6vw, 52px); }
+.doc-header p { color: var(--muted); margin: 0; }
+
+.summary {
+  background: var(--accent-soft);
+  border-radius: 18px;
+  padding: 24px 28px;
+  margin-bottom: 40px;
+}
+.summary h2 { text-align: left; font-size: 22px; margin: 0 0 8px; }
+.summary ul { margin: 0; padding-left: 20px; }
+.summary li { margin: 4px 0; }
+
+.doc h2 { text-align: left; font-size: 24px; margin: 40px 0 8px; }
+.doc p { margin: 0 0 12px; }
+
+/* ---------- Подвал ---------- */
+
+footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  padding: 28px 0 40px;
+  font-size: 12px;
+  color: var(--muted);
+}
+footer .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; font-size: 14px; }
+footer p { margin: 4px 0; }

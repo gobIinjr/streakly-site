@@ -1,99 +1,268 @@
 <!doctype html>
 <!--
-  Страница поддержки для App Store (поле «URL поддержки»).
-  Apple требует, чтобы на ней был способ связаться с разработчиком.
+  Главная страница Streakly и страница поддержки для App Store
+  (поле «URL поддержки»). Apple требует, чтобы на ней был способ
+  связаться с разработчиком — это блок «Поддержка» ниже.
+  Тексты на трёх языках, переключает их lang.js.
 -->
 <html lang="ru">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Streakly — поддержка</title>
-  <style>
-    :root { --bg: #fafafa; --text: #1c1c1e; --muted: #6e6e73; --line: #e5e5ea; --accent: #0e8f7e; }
-    @media (prefers-color-scheme: dark) {
-      :root { --bg: #0b0b0d; --text: #f2f2f7; --muted: #a1a1a6; --line: #2c2c2e; --accent: #5ee7d0; }
-    }
-    body { margin: 0; background: var(--bg); color: var(--text);
-           font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    main { max-width: 680px; margin: 0 auto; padding: 40px 20px 64px; }
-    h1 { font-size: 28px; line-height: 1.2; margin: 0 0 4px; }
-    h2 { font-size: 18px; margin: 28px 0 6px; }
-    .muted { color: var(--muted); font-size: 14px; }
-    nav { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 8px; }
-    a { color: var(--accent); }
-    .contact { margin: 20px 0; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; }
-    section { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 8px; }
-  </style>
+  <title>Streakly: Habits &amp; Sleep</title>
+  <meta name="title-ru" content="Streakly — привычки и сон">
+  <meta name="title-en" content="Streakly: Habits &amp; Sleep">
+  <meta name="title-es" content="Streakly: hábitos y sueño">
+  <meta name="description" content="Streakly — трекер привычек для iPhone. Отмечайте привычки и смотрите, как они совпадают со сном, шагами и пульсом.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="lang.js"></script>
 </head>
 <body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="images/favicon.png" alt="">Streakly</a>
+    <nav class="nav-links">
+      <a href="#features"><span data-lang="ru">Возможности</span><span data-lang="en">Features</span><span data-lang="es">Funciones</span></a>
+      <a href="#support"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span><span data-lang="es">Soporte</span></a>
+      <a href="privacy.html"><span data-lang="ru">Конфиденциальность</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span></a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-set-lang="ru">RU</button>
+      <button type="button" data-set-lang="en">EN</button>
+      <button type="button" data-set-lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
 <main>
-  <nav>
-    <a href="#ru">Русский</a><a href="#en">English</a><a href="#es">Español</a>
-    <a href="privacy.html">Конфиденциальность · Privacy</a>
-  </nav>
 
-  <section id="ru">
-    <h1>Поддержка Streakly</h1>
-    <p class="muted">Трекер привычек для iPhone</p>
-    <div class="contact">Нашли ошибку или есть идея? Напишите: <a href="mailto:streakly.support@icloud.com">streakly.support@icloud.com</a>. Отвечаем в течение пары дней.</div>
-
-    <h2>Как добавить виджет?</h2>
-    <p>Нажмите и удерживайте пустое место на домашнем экране → «Изменить» → «Добавить виджет» → Streakly.</p>
-
-    <h2>Как не потерять серию, если пропустил день?</h2>
-    <p>За каждые 7 дней серии даётся щит заморозки. Он закрывает один пропущенный день. Если серия оборвалась вчера, её можно вернуть за щит на экране серии.</p>
-
-    <h2>Отмечаю привычки после полуночи — серия обрывается</h2>
-    <p>В настройках есть пункт «Когда заканчивается день». Сдвиньте границу, и поздние отметки зачтутся за прошедший день.</p>
-
-    <h2>Как перенести данные на новый телефон?</h2>
-    <p>Настройки → «Резервная копия» → сохраните файл. На новом телефоне откройте тот же пункт и восстановите из файла.</p>
-
-    <h2>Не приходят напоминания</h2>
-    <p>Проверьте, что уведомления разрешены: «Настройки» iPhone → «Уведомления» → Streakly. И что у привычки задано время напоминания.</p>
+  <!-- ===== Главный экран ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <img class="icon" src="images/icon-256.png" alt="Streakly">
+      <div data-lang="ru">
+        <h1>Streakly</h1>
+        <p class="lead">Отмечайте привычки в одно касание и смотрите, как они совпадают с вашим сном, шагами и пульсом.</p>
+        <div class="actions">
+          <span class="button primary soon">Скоро в App Store</span>
+          <a class="button secondary" href="#support">Поддержка</a>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h1>Streakly</h1>
+        <p class="lead">Check off habits with a single tap and see how they line up with your sleep, steps and heart rate.</p>
+        <div class="actions">
+          <span class="button primary soon">Coming soon to the App Store</span>
+          <a class="button secondary" href="#support">Support</a>
+        </div>
+      </div>
+      <div data-lang="es">
+        <h1>Streakly</h1>
+        <p class="lead">Marca tus hábitos con un toque y descubre cómo se relacionan con tu sueño, tus pasos y tu pulso.</p>
+        <div class="actions">
+          <span class="button primary soon">Muy pronto en el App Store</span>
+          <a class="button secondary" href="#support">Soporte</a>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="en">
-    <h1>Streakly Support</h1>
-    <p class="muted">Habit tracker for iPhone</p>
-    <div class="contact">Found a bug or have an idea? Email us: <a href="mailto:streakly.support@icloud.com">streakly.support@icloud.com</a>. We reply within a couple of days.</div>
+  <!-- ===== Экраны приложения ===== -->
+  <div class="gallery" data-lang="ru">
+    <figure><img src="images/ru-01-today.jpg" alt="Экран «Сегодня»" loading="lazy"><figcaption>Все привычки дня</figcaption></figure>
+    <figure><img src="images/ru-02-connections.jpg" alt="Экран «Взаимосвязи»" loading="lazy"><figcaption>Взаимосвязи</figcaption></figure>
+    <figure><img src="images/ru-03-connection-detail.jpg" alt="Подробности связи" loading="lazy"><figcaption>Разница по дням</figcaption></figure>
+    <figure><img src="images/ru-05-today-dark.jpg" alt="Тёмная тема" loading="lazy"><figcaption>Светлая и тёмная тема</figcaption></figure>
+  </div>
+  <!-- Для испанского — английские экраны: они понятнее, чем русские -->
+  <div class="gallery" data-lang="en">
+    <figure><img src="images/en-01-today.jpg" alt="Today screen" loading="lazy"><figcaption>All of today’s habits</figcaption></figure>
+    <figure><img src="images/en-02-connections.jpg" alt="Connections screen" loading="lazy"><figcaption>Connections</figcaption></figure>
+    <figure><img src="images/en-03-connection-detail.jpg" alt="Connection details" loading="lazy"><figcaption>Day-by-day difference</figcaption></figure>
+    <figure><img src="images/en-05-today-dark.jpg" alt="Dark mode" loading="lazy"><figcaption>Light and dark mode</figcaption></figure>
+  </div>
+  <div class="gallery" data-lang="es">
+    <figure><img src="images/en-01-today.jpg" alt="Pantalla Hoy" loading="lazy"><figcaption>Todos los hábitos del día</figcaption></figure>
+    <figure><img src="images/en-02-connections.jpg" alt="Pantalla Conexiones" loading="lazy"><figcaption>Conexiones</figcaption></figure>
+    <figure><img src="images/en-03-connection-detail.jpg" alt="Detalle de una conexión" loading="lazy"><figcaption>La diferencia, día a día</figcaption></figure>
+    <figure><img src="images/en-05-today-dark.jpg" alt="Modo oscuro" loading="lazy"><figcaption>Modo claro y oscuro</figcaption></figure>
+  </div>
 
-    <h2>How do I add a widget?</h2>
-    <p>Touch and hold an empty area of the Home Screen → Edit → Add Widget → Streakly.</p>
+  <!-- ===== Возможности ===== -->
+  <section class="section alt" id="features">
+    <div class="wrap">
 
-    <h2>How do I keep my streak if I miss a day?</h2>
-    <p>You get a freeze shield for every 7 days of streak. It covers one missed day. If your streak broke yesterday, you can restore it with a shield on the streak screen.</p>
+      <div data-lang="ru">
+        <h2>Всё важное — на одном экране.</h2>
+        <p class="section-lead">Простой трекер, который со временем показывает, что на самом деле меняется в ваших днях.</p>
+      </div>
+      <div data-lang="en">
+        <h2>Everything that matters, on one screen.</h2>
+        <p class="section-lead">A simple tracker that, over time, shows what actually changes in your days.</p>
+      </div>
+      <div data-lang="es">
+        <h2>Lo importante, en una sola pantalla.</h2>
+        <p class="section-lead">Un registro sencillo que, con el tiempo, te muestra qué cambia de verdad en tus días.</p>
+      </div>
 
-    <h2>I check in after midnight and my streak breaks</h2>
-    <p>Use the "When the day ends" setting. Move the boundary and late check-ins will count for the previous day.</p>
+      <div class="grid">
+        <div class="card">
+          <!-- Иконки нарисованы вручную: символы SF Symbols нельзя использовать на сайтах -->
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/></svg></div>
+          <div data-lang="ru"><h3>Отметка в одно касание</h3><p>Кольцо у каждой привычки показывает, сколько сделано за день. Шаги и минуты можно брать из «Здоровья».</p></div>
+          <div data-lang="en"><h3>One-tap check-ins</h3><p>A ring on every habit shows how much is done today. Steps and minutes can come straight from Health.</p></div>
+          <div data-lang="es"><h3>Marca con un toque</h3><p>El anillo de cada hábito muestra cuánto llevas hoy. Los pasos y los minutos pueden venir de la app Salud.</p></div>
+        </div>
 
-    <h2>How do I move my data to a new phone?</h2>
-    <p>Settings → Backup → save the file. On the new phone, open the same item and restore from the file.</p>
+        <div class="card">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.5 7h7M7.3 9.2l3.4 6.6M16.7 9.2l-3.4 6.6"/></svg></div>
+          <div data-lang="ru"><h3>Взаимосвязи</h3><p>Streakly сравнивает дни с привычкой и без неё и показывает, как менялись сон, шаги и пульс — и какие привычки тянут за собой другие.</p></div>
+          <div data-lang="en"><h3>Connections</h3><p>Streakly compares days with and without a habit, shows how your sleep, steps and heart rate changed — and which habits pull others along.</p></div>
+          <div data-lang="es"><h3>Conexiones</h3><p>Streakly compara los días con y sin un hábito, te muestra cómo cambiaron tu sueño, tus pasos y tu pulso, y qué hábitos arrastran a otros.</p></div>
+        </div>
 
-    <h2>Reminders don't arrive</h2>
-    <p>Make sure notifications are allowed in iPhone Settings → Notifications → Streakly, and that the habit has a reminder time set.</p>
+        <div class="card">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.5 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.2 1-3.6 2.2-4.8.3 1.6 1.1 2.6 2.1 3C11 8.5 11.3 5.5 12 3z"/></svg></div>
+          <div data-lang="ru"><h3>Серии и щиты</h3><p>Каждые 7 дней серии дают щит заморозки: один неудачный день не обнулит прогресс. Напоминания приходят вовремя.</p></div>
+          <div data-lang="en"><h3>Streaks and shields</h3><p>Every 7 days of streak earns a freeze shield, so one bad day doesn’t erase your progress. Reminders arrive right on time.</p></div>
+          <div data-lang="es"><h3>Rachas y escudos</h3><p>Cada 7 días de racha ganas un escudo de congelación: un mal día no borra tu progreso. Los recordatorios llegan a tiempo.</p></div>
+        </div>
+
+        <div class="card">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div>
+          <div data-lang="ru"><h3>Данные остаются у вас</h3><p>Никаких аккаунтов, рекламы и аналитики. Данные «Здоровья» обрабатываются только на iPhone и никуда не отправляются.</p></div>
+          <div data-lang="en"><h3>Your data stays yours</h3><p>No accounts, ads or analytics. Health data is processed only on your iPhone and is never sent anywhere.</p></div>
+          <div data-lang="es"><h3>Tus datos son tuyos</h3><p>Sin cuentas, anuncios ni analítica. Los datos de Salud se procesan solo en tu iPhone y no se envían a ninguna parte.</p></div>
+        </div>
+      </div>
+
+      <p class="note" data-lang="ru">Взаимосвязи — это совпадения в ваших данных, а не медицинский совет. Streakly не ставит диагнозов и не заменяет врача.</p>
+      <p class="note" data-lang="en">Connections are patterns in your own data, not medical advice. Streakly does not diagnose anything and is not a substitute for a doctor.</p>
+      <p class="note" data-lang="es">Las conexiones son coincidencias en tus datos, no consejos médicos. Streakly no realiza diagnósticos ni sustituye a un médico.</p>
+    </div>
   </section>
 
-  <section id="es">
-    <h1>Soporte de Streakly</h1>
-    <p class="muted">Registro de hábitos para iPhone</p>
-    <div class="contact">¿Has encontrado un error o tienes una idea? Escríbenos: <a href="mailto:streakly.support@icloud.com">streakly.support@icloud.com</a>. Respondemos en un par de días.</div>
+  <!-- ===== Streakly Pro ===== -->
+  <section class="section">
+    <div class="wrap">
+      <div data-lang="ru">
+        <h2>Бесплатно — главное. В Pro — всё.</h2>
+        <p class="section-lead">До 3 привычек, связи между привычками и одна связь со сном или шагами за 30 дней — бесплатно. Streakly Pro открывает пульс, вариабельность и энергию, периоды до года, советы, сколько угодно привычек, иконки и выгрузку в CSV.</p>
+      </div>
+      <div data-lang="en">
+        <h2>The essentials are free. Pro unlocks it all.</h2>
+        <p class="section-lead">Up to 3 habits, connections between habits and one sleep or steps connection over 30 days are free. Streakly Pro adds heart rate, variability and energy, ranges up to a year, tips, unlimited habits, app icons and CSV export.</p>
+      </div>
+      <div data-lang="es">
+        <h2>Lo esencial es gratis. Pro lo abre todo.</h2>
+        <p class="section-lead">Hasta 3 hábitos, las conexiones entre hábitos y una conexión con el sueño o los pasos en 30 días son gratis. Streakly Pro añade pulso, variabilidad y energía, periodos de hasta un año, consejos, hábitos ilimitados, iconos y exportación a CSV.</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>¿Cómo añado un widget?</h2>
-    <p>Mantén pulsada una zona vacía de la pantalla de inicio → Editar → Añadir widget → Streakly.</p>
+  <!-- ===== Поддержка ===== -->
+  <section class="section alt" id="support">
+    <div class="wrap narrow">
 
-    <h2>¿Cómo conservo la racha si fallo un día?</h2>
-    <p>Por cada 7 días de racha recibes un escudo de congelación. Cubre un día perdido. Si la racha se rompió ayer, puedes recuperarla con un escudo en la pantalla de racha.</p>
+      <div data-lang="ru">
+        <h2>Поддержка</h2>
+        <div class="contact">
+          <p>Нашли ошибку или есть идея? Напишите нам — отвечаем в течение пары дней.</p>
+          <a class="button primary" href="mailto:streakly.support@icloud.com">streakly.support@icloud.com</a>
+        </div>
+        <div class="faq">
+          <details><summary>Почему на вкладке «Взаимосвязи» пусто?</summary>
+            <p>Для вывода нужно хотя бы 7 дней с привычкой и 7 дней без неё за выбранный период. Если данных «Здоровья» нет совсем, проверьте доступ: «Настройки» → «Здоровье» → «Доступ к данным и устройства» → Streakly. Сон записывают Apple Watch или режим сна на iPhone. Посмотреть, как всё работает, можно на примере — кнопка «Посмотреть на примере».</p></details>
+          <details><summary>Куда уходят мои данные «Здоровья»?</summary>
+            <p>Никуда. Сон, шаги и пульс читаются и сравниваются прямо на iPhone, в iCloud и на серверы они не попадают. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p></details>
+          <details><summary>Как добавить виджет?</summary>
+            <p>Нажмите и удерживайте пустое место на экране «Домой» → «Изменить» → «Добавить виджет» → Streakly.</p></details>
+          <details><summary>Как не потерять серию, если пропустил день?</summary>
+            <p>За каждые 7 дней серии даётся щит заморозки. Он закрывает один пропущенный день. Если серия оборвалась вчера, её можно вернуть за щит на экране серии.</p></details>
+          <details><summary>Отмечаю привычки после полуночи — серия обрывается</summary>
+            <p>В настройках есть пункт «Когда заканчивается день». Сдвиньте границу, и поздние отметки зачтутся за прошедший день.</p></details>
+          <details><summary>Как перенести данные на новый телефон?</summary>
+            <p>Если на обоих телефонах выполнен вход в один iCloud, привычки перенесутся сами. Можно и вручную: «Настройки» → «Резервная копия» → сохраните файл, затем восстановите его на новом телефоне.</p></details>
+          <details><summary>Не приходят напоминания</summary>
+            <p>Проверьте, что уведомления разрешены: «Настройки» iPhone → «Уведомления» → Streakly. И что у привычки задано время напоминания.</p></details>
+          <details><summary>Как отменить подписку или восстановить покупку?</summary>
+            <p>Отменить: «Настройки» iPhone → ваше имя → «Подписки» → Streakly Pro. Восстановить на новом телефоне: откройте Streakly Pro в профиле и нажмите кнопку восстановления внизу экрана.</p></details>
+        </div>
+      </div>
 
-    <h2>Marco después de medianoche y la racha se rompe</h2>
-    <p>Usa el ajuste «Cuándo termina el día». Mueve el límite y las marcas tardías contarán para el día anterior.</p>
+      <div data-lang="en">
+        <h2>Support</h2>
+        <div class="contact">
+          <p>Found a bug or have an idea? Email us — we reply within a couple of days.</p>
+          <a class="button primary" href="mailto:streakly.support@icloud.com">streakly.support@icloud.com</a>
+        </div>
+        <div class="faq">
+          <details><summary>Why is the Connections tab empty?</summary>
+            <p>A connection needs at least 7 days with the habit and 7 days without it in the selected range. If there’s no Health data at all, check access in Settings → Health → Data Access &amp; Devices → Streakly. Sleep is recorded by Apple Watch or Sleep Focus on iPhone. To see how it works, tap “See an Example”.</p></details>
+          <details><summary>Where does my Health data go?</summary>
+            <p>Nowhere. Sleep, steps and heart rate are read and compared right on your iPhone; they never go to iCloud or any server. See the <a href="privacy.html">privacy policy</a> for details.</p></details>
+          <details><summary>How do I add a widget?</summary>
+            <p>Touch and hold an empty area of the Home Screen → Edit → Add Widget → Streakly.</p></details>
+          <details><summary>How do I keep my streak if I miss a day?</summary>
+            <p>You get a freeze shield for every 7 days of streak. It covers one missed day. If your streak broke yesterday, you can restore it with a shield on the streak screen.</p></details>
+          <details><summary>I check in after midnight and my streak breaks</summary>
+            <p>Use the “When the day ends” setting. Move the boundary and late check-ins will count for the previous day.</p></details>
+          <details><summary>How do I move my data to a new phone?</summary>
+            <p>If both phones use the same iCloud account, your habits move over automatically. You can also do it manually: Settings → Backup → save the file, then restore it on the new phone.</p></details>
+          <details><summary>Reminders don’t arrive</summary>
+            <p>Make sure notifications are allowed in iPhone Settings → Notifications → Streakly, and that the habit has a reminder time set.</p></details>
+          <details><summary>How do I cancel or restore my subscription?</summary>
+            <p>To cancel: iPhone Settings → your name → Subscriptions → Streakly Pro. To restore on a new phone: open Streakly Pro from your profile and tap the restore button at the bottom of the screen.</p></details>
+        </div>
+      </div>
 
-    <h2>¿Cómo paso mis datos a un teléfono nuevo?</h2>
-    <p>Ajustes → Copia de seguridad → guarda el archivo. En el teléfono nuevo, abre la misma opción y restaura desde el archivo.</p>
+      <div data-lang="es">
+        <h2>Soporte</h2>
+        <div class="contact">
+          <p>¿Has encontrado un error o tienes una idea? Escríbenos: respondemos en un par de días.</p>
+          <a class="button primary" href="mailto:streakly.support@icloud.com">streakly.support@icloud.com</a>
+        </div>
+        <div class="faq">
+          <details><summary>¿Por qué la pestaña Conexiones está vacía?</summary>
+            <p>Hacen falta al menos 7 días con el hábito y 7 días sin él en el periodo elegido. Si no hay ningún dato de Salud, revisa el acceso en Ajustes → Salud → Acceso a datos y dispositivos → Streakly. El sueño lo registran el Apple Watch o el modo Sueño del iPhone. Para ver cómo funciona, pulsa «Ver un ejemplo».</p></details>
+          <details><summary>¿Adónde van mis datos de Salud?</summary>
+            <p>A ninguna parte. El sueño, los pasos y el pulso se leen y se comparan en tu iPhone; nunca van a iCloud ni a ningún servidor. Más detalles en la <a href="privacy.html">política de privacidad</a>.</p></details>
+          <details><summary>¿Cómo añado un widget?</summary>
+            <p>Mantén pulsada una zona vacía de la pantalla de inicio → Editar → Añadir widget → Streakly.</p></details>
+          <details><summary>¿Cómo conservo la racha si fallo un día?</summary>
+            <p>Por cada 7 días de racha recibes un escudo de congelación. Cubre un día perdido. Si la racha se rompió ayer, puedes recuperarla con un escudo en la pantalla de racha.</p></details>
+          <details><summary>Marco después de medianoche y la racha se rompe</summary>
+            <p>Usa el ajuste «Cuándo termina el día». Mueve el límite y las marcas tardías contarán para el día anterior.</p></details>
+          <details><summary>¿Cómo paso mis datos a un teléfono nuevo?</summary>
+            <p>Si los dos teléfonos usan la misma cuenta de iCloud, tus hábitos pasan solos. También puedes hacerlo a mano: Ajustes → Copia de seguridad → guarda el archivo y restáuralo en el teléfono nuevo.</p></details>
+          <details><summary>No llegan los recordatorios</summary>
+            <p>Comprueba que las notificaciones están permitidas en Ajustes del iPhone → Notificaciones → Streakly, y que el hábito tiene una hora de recordatorio.</p></details>
+          <details><summary>¿Cómo cancelo o restauro la suscripción?</summary>
+            <p>Para cancelar: Ajustes del iPhone → tu nombre → Suscripciones → Streakly Pro. Para restaurar en un teléfono nuevo: abre Streakly Pro desde tu perfil y pulsa el botón de restaurar al final de la pantalla.</p></details>
+        </div>
+      </div>
 
-    <h2>No llegan los recordatorios</h2>
-    <p>Comprueba que las notificaciones están permitidas en Ajustes del iPhone → Notificaciones → Streakly, y que el hábito tiene una hora de recordatorio.</p>
+    </div>
   </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy.html"><span data-lang="ru">Политика конфиденциальности</span><span data-lang="en">Privacy Policy</span><span data-lang="es">Política de privacidad</span></a>
+      <a href="#support"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span><span data-lang="es">Soporte</span></a>
+      <a href="mailto:streakly.support@icloud.com">streakly.support@icloud.com</a>
+    </div>
+    <p>© 2026 Streakly</p>
+    <p data-lang="ru">Apple, iPhone, Apple Watch и App Store — товарные знаки Apple Inc., зарегистрированные в США и других странах. Streakly не связан с Apple Inc.</p>
+    <p data-lang="en">Apple, iPhone, Apple Watch and App Store are trademarks of Apple Inc., registered in the U.S. and other countries. Streakly is not affiliated with Apple Inc.</p>
+    <p data-lang="es">Apple, iPhone, Apple Watch y App Store son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países. Streakly no está afiliado a Apple Inc.</p>
+  </div>
+</footer>
+
 </body>
 </html>
